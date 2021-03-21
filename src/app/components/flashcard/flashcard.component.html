@@ -1,0 +1,84 @@
+  <form class="form-inline" [formGroup]="opForm" novalidate>
+  <div class="form-group">
+    <select class="form-control" id="op" formControlName="opControl">
+      <option>Addition</option>
+      <option>Subtraction</option>
+      <option>Multiplication</option>
+      <option>Division</option>
+    </select>
+    <button (click)="startQuiz()" [hidden]="quizRunning" class="btn btn-primary" >Start Quiz</button> 
+    <a href="settings" class="btn btn-secondary" role="button" aria-disabled="true" alt="Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+    {{totals}} question(s)
+
+  </div>
+</form>
+
+<div class="alert alert-danger" *ngIf="failure==true">
+    Error saving: {{errmsg}}
+</div>
+
+<div class="alert alert-warning" *ngIf="hasWarning==true">
+    {{warningMsg}}
+</div>
+
+<div class="card" *ngIf="quizRunning == false">
+  <div class="card-header">Instructions</div>
+  <div class="card-block">
+    <p>Choose an operation and click the &quot;Start Quiz&quot; button to start.</p>
+    <p>You can click the &quot;Settings&quot; link to adjust the quiz settings below:</p>
+    <ul>
+      <li>Number of quiz questions</li>
+      <li>Highest number in equations</li>
+    </ul>
+    <p>Your settings are saved in your browser so you do not have to set them ever ytime you 
+    visit the site.</p>
+  </div>
+</div>
+
+<div class="flashcard col-6" *ngIf="quizRunning == true">
+  <div class="row">
+    <div class="col-6">
+      Question {{index+1}} of {{totals}}
+    </div>
+  </div>
+  <div class="row endOfProblem">
+    <div class="col-1">
+      <div class="operator">
+          {{operatorIndicator}}
+      </div>
+    </div>
+    <div class="col-3">
+      <h1>{{x}}</h1>
+      <h1>{{y}}</h1>  
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">&nbsp;</div>
+    <div class="col-3">
+        <input type="number" [(ngModel)]="userAnswer" class="answer" onfocus="this.select()" (keyup.enter)="moveNext()" #answerField />
+    </div>
+  </div>  
+  <p>&nbsp;</p>
+  <div class="row">
+      <div class="col-1">&nbsp;</div>
+      <div class="col-3">
+          <button class="btn btn-primary" (click)="moveNext()">Next</button>
+      </div>
+    </div>  
+  </div> 
+
+  <div class="card" *ngIf="quizComplete">
+    <div class="card-header">Results</div>
+    <div class="card-text">
+      You got {{score}}% correct!
+      <div class="row" *ngFor="let q of questions">
+        <div class="col-2 equation">
+          {{q.Equation()}} = {{q.Response}}
+        </div>
+        <div class="col-1">
+          <i class="{{q.ResultIcon}}" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>

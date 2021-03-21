@@ -1,0 +1,15 @@
+<div class="alert alert-success" *ngIf="success==true">
+  Settings Updated!
+</div>
+
+<div class="alert alert-danger" *ngIf="failure==true">
+  Error saving: {{errmsg}}
+</div>
+
+<div class=form-group>
+  <label for="totalQuestions">Number of Quiz Questions:</label>
+  <input type="number" class="form-control" [(ngModel)]="maxQuestions" id="totalQuestions" />
+  <label for="highestNumber">Highest Number in Equation:</label>
+  <input type="number" class="form-control" [(ngModel)]="highestNumber" id="highestNumber" />
+  <button type="button" class="btn btn-default" (click)="onSave()">Save</button>
+</div>

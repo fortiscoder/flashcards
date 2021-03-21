@@ -1,0 +1,59 @@
+@media only screen and (max-device-width: 480px) {
+
+}
+
+    div.flashcard {
+        box-shadow: 10px 10px 10px grey;
+        margin-top: 100px;
+        padding-top: 20px;
+        padding-left: 100px;
+        height: 400px;
+    }
+    div.flashcard h1 {
+        text-align: center;
+    }
+    div.operator {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2em;
+        position: absolute;
+        bottom: 2px;
+        left:0;
+    }
+
+    .answer {
+        font-size: 2.5em;
+        margin-left: 25px;
+        width: 80px;
+    }
+
+
+div.problem {
+    border: 1px solid black;
+    width:200;
+}
+
+div.equation {
+    text-align: right;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+div.endOfProblem {
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-left:4px;
+    margin-right:4px;
+}
+
+form {
+    margin-bottom: 20px;
+}
